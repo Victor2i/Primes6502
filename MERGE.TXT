@@ -1,0 +1,14 @@
+; Créer un fichier NES avec une en-tête en ajoutant le code et les données graphiques
+
+	.org 0
+	
+	.db "NES",$1A ; Magic
+	.db 1         ; Taille du programme (16 KB * n)
+	.db 1         ; Taille du CHR ROM (8 KB * n)
+	.db 1         ; Mapper
+
+	.org $10
+	
+	.incbin "OUT.PRG"         ; Code compilé
+	.incbin "CHR/4096.CHR"    ; Graphismes (P1)
+	.incbin "CHR/ASCII.CHR"   ; Graphismes (P2)
